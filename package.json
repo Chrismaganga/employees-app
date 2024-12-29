@@ -1,0 +1,31 @@
+{
+  "name": "my-router-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "dev": "webpack serve --port 3001 --no-open",
+    "build": "webpack build"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.7.25",
+    "@tanstack/router-plugin": "^1.91.1",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "html-webpack-plugin": "^5.6.0",
+    "postcss": "^8.4.49",
+    "swc-loader": "^0.2.6",
+    "tailwindcss": "^3.4.17",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.92.9",
+    "@tanstack/router-devtools": "^1.92.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
