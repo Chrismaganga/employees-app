@@ -9,35 +9,52 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <>
-      <div className="p-4 flex flex-1 gap-10 border-slate-100  text-lg bg-white shadow-lg">
+      <div className="p-4 flex flex-1 gap-10 border-slate-200 text-lg bg-white shadow-lg">
         <Link
           to="/"
+          className="mr-4"
           activeProps={{
             className: 'font-bold',
           }}
           activeOptions={{ exact: true }}
         >
-          Home
-        </Link>{' '}
+          HOME
+        </Link>
         <Link
           to="/newPoll"
+          className="mr-4"
           activeProps={{
             className: 'font-bold',
           }}
         >
-          New Poll
+          NEWPOLL
         </Link>
-        <Link to="/leaderboard" activeProps={{ 
-          className: 'font-bold' }}
+        <Link
+          to="/login"
+          className="mr-4"
+          activeProps={{
+            className: 'font-bold',
+          }}
         >
-          Leaderboard   
-      
+          LOGIN
         </Link>
-        <Link to="/polls" activeProps={{
-          className: 'font-bold',
-        }}>
-          Polls 
-     
+        <Link
+          to="/leaderboard"
+          className="mr-4"
+          activeProps={{
+            className: 'font-bold',
+          }}
+        >
+          LEADERBOARD
+        </Link>
+        <Link
+          to="/polls"
+          className="mr-4"
+          activeProps={{
+            className: 'font-bold',
+          }}
+        >
+          POLLS
         </Link>
       </div>
       <hr />

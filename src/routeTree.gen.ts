@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as PollsImport } from './routes/polls'
 import { Route as NewPollImport } from './routes/newPoll'
+import { Route as LoginImport } from './routes/login'
 import { Route as LeaderboardImport } from './routes/leaderboard'
 import { Route as IndexImport } from './routes/index'
 
@@ -27,6 +28,12 @@ const PollsRoute = PollsImport.update({
 const NewPollRoute = NewPollImport.update({
   id: '/newPoll',
   path: '/newPoll',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LoginRoute = LoginImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -60,6 +67,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LeaderboardImport
       parentRoute: typeof rootRoute
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
     '/newPoll': {
       id: '/newPoll'
       path: '/newPoll'
@@ -82,6 +96,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/login': typeof LoginRoute
   '/newPoll': typeof NewPollRoute
   '/polls': typeof PollsRoute
 }
@@ -89,6 +104,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/login': typeof LoginRoute
   '/newPoll': typeof NewPollRoute
   '/polls': typeof PollsRoute
 }
@@ -97,22 +113,24 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/login': typeof LoginRoute
   '/newPoll': typeof NewPollRoute
   '/polls': typeof PollsRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/leaderboard' | '/newPoll' | '/polls'
+  fullPaths: '/' | '/leaderboard' | '/login' | '/newPoll' | '/polls'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/leaderboard' | '/newPoll' | '/polls'
-  id: '__root__' | '/' | '/leaderboard' | '/newPoll' | '/polls'
+  to: '/' | '/leaderboard' | '/login' | '/newPoll' | '/polls'
+  id: '__root__' | '/' | '/leaderboard' | '/login' | '/newPoll' | '/polls'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LeaderboardRoute: typeof LeaderboardRoute
+  LoginRoute: typeof LoginRoute
   NewPollRoute: typeof NewPollRoute
   PollsRoute: typeof PollsRoute
 }
@@ -120,6 +138,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LeaderboardRoute: LeaderboardRoute,
+  LoginRoute: LoginRoute,
   NewPollRoute: NewPollRoute,
   PollsRoute: PollsRoute,
 }
@@ -136,6 +155,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/leaderboard",
+        "/login",
         "/newPoll",
         "/polls"
       ]
@@ -145,6 +165,9 @@ export const routeTree = rootRoute
     },
     "/leaderboard": {
       "filePath": "leaderboard.tsx"
+    },
+    "/login": {
+      "filePath": "login.tsx"
     },
     "/newPoll": {
       "filePath": "newPoll.tsx"
